@@ -1,0 +1,106 @@
+1.
+
+def show_the_love(l):
+    smallest_no = min(l)
+    index = l.index(smallest_no)
+    k = 0
+    
+    for i in range(len(l)):
+        if l[i] != smallest_no:
+            j =  0.25 * l[i]
+            l[i] = l[i]- j
+            k += j
+            
+    l[index] = smallest_no + k
+    l = [int(i) if i == int(i) else i for i in l]
+    return l
+
+print(show_the_love([4,1,4]) )
+print(show_the_love([16, 10, 8]))
+print(show_the_love([2, 100]))
+
+
+2.
+
+def letters(w1,w2):
+    common = ''
+    for i in set(w1)&set(w2):
+        common += ''.join(i)
+    
+    unique1 = ''
+    for i in set(w1).difference(set(w2)):
+        unique1 += ''.join(i)
+        
+    unique2 = ''
+    for i in set(w2).difference(set(w1)):
+        unique2 += ''.join(i)
+        
+    return common, unique1 , unique2
+
+print(letters("sharp", "soap"))
+print(letters("board", "bored") )
+print(letters("happiness", "envelope"))
+print(letters("kerfuffle", "fluffy"))
+print(letters("match","ham"))
+
+3.
+
+import math
+def pairs(l):
+    l2 = []
+    for i in range(math.ceil(len(l)/2)):
+        l1 = []
+        l1.append(l[i])
+        l1.append(l[len(l)-i-1])
+        l2.append(l1)
+    return l2
+
+print(pairs([1,2,3,4,5,6,7]))
+print(pairs([1,2,3,4,5,6]))
+print(pairs([5,9,8,1,2]))
+print(pairs([]))
+
+4.
+
+def add_str_nums(s1,s2):
+    if s1 != '' and s2 != '':
+        if s1.isnumeric() and s2.isnumeric():
+            return str(int(s1) + int(s2))
+        else:
+            return -1
+    else:
+        return s1 + s2
+    
+    
+print(add_str_nums("4","5"))
+print(add_str_nums("abcdefg", "3"))
+print(add_str_nums("1",""))
+print(add_str_nums("1874682736267235927359283579235789257", "32652983572985729"))
+
+
+5.
+
+def unmix(s):
+    length = len(s)
+
+    if length % 2 != 0 :
+        length = length - 1
+
+    l = list(s)
+    i = 0
+    while True:
+        if i == length:
+            break
+        else:
+            l[i], l[i+1] = l[i+1],l[i]
+            i += 2
+
+    s = ''
+    for i in l:
+        s += ''.join(i)
+
+    return s    
+
+print(unmix("123456"))
+print(unmix("hTsii  s aimex dpus rtni.g"))
+print(unmix("badce"))
